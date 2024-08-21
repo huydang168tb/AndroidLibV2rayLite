@@ -28,7 +28,7 @@ git clone --depth=1 https://github.com/shadowsocks/libancillary.git
 $NDK_HOME/ndk-build \
 	NDK_PROJECT_PATH=. \
 	APP_BUILD_SCRIPT=./tun2socks.mk \
-	APP_ABI=all \
+	APP_ABI=arm64-v8a \
 	APP_PLATFORM=android-29 \
 	NDK_LIBS_OUT=$TMPDIR/libs \
 	NDK_OUT=$TMPDIR/tmp \
