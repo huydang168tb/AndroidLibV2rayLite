@@ -32,7 +32,7 @@ $NDK_HOME/ndk-build \
 	APP_PLATFORM=android-29 \
 	NDK_LIBS_OUT=$TMPDIR/libs \
 	NDK_OUT=$TMPDIR/tmp \
-	APP_SHORT_COMMANDS=false LOCAL_SHORT_COMMANDS=false -B -j4
+	APP_SHORT_COMMANDS=false LOCAL_SHORT_COMMANDS=false -B -j 8
 
 tar cvfz $__dir/libtun2socks.so.tgz libs
 popd
