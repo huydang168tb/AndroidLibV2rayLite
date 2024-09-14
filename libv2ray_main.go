@@ -77,7 +77,7 @@ func (v *V2RayPoint) RunLoop(prefIPv6 bool) (err error) {
 			case <-v.dialer.ResolveChan():
 				// shutdown VPNService if server name can not reolved
 				if !v.dialer.IsVServerReady() {
-					log.Println("vServer cannot resolved, shutdown")
+					// log.Println("vServer cannot resolved, shutdown")
 					v.StopLoop()
 					v.SupportSet.Shutdown()
 				}
@@ -135,27 +135,27 @@ func (v *V2RayPoint) shutdownInit() {
 }
 
 func (v *V2RayPoint) pointloop() error {
-	log.Println("loading v2ray config")
+	// log.Println("loading v2ray config")
 	config, err := v2serial.LoadJSONConfig(strings.NewReader(v.ConfigureFileContent))
 	if err != nil {
-		log.Println(err)
+		// log.Println(err)
 		return err
 	}
 
-	log.Println("new v2ray core")
+	// log.Println("new v2ray core")
 	v.Vpoint, err = v2core.New(config)
 	if err != nil {
 		v.Vpoint = nil
-		log.Println(err)
+		// log.Println(err)
 		return err
 	}
 	v.statsManager = v.Vpoint.GetFeature(v2stats.ManagerType()).(v2stats.Manager)
 
-	log.Println("start v2ray core")
+	// log.Println("start v2ray core")
 	v.IsRunning = true
 	if err := v.Vpoint.Start(); err != nil {
 		v.IsRunning = false
-		log.Println(err)
+		// log.Println(err)
 		return err
 	}
 
@@ -293,7 +293,7 @@ type consoleLogWriter struct {
 }
 
 func (w *consoleLogWriter) Write(s string) error {
-	w.logger.Print(s)
+	// w.logger.Print(s)
 	return nil
 }
 
